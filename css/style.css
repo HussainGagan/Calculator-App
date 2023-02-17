@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap");
+
+:root {
+  --border-radius: 8px;
+  --main-background-color: hsl(222, 26%, 31%);
+  --keypad-background-color: hsl(223, 31%, 20%);
+  --screen-background-color: hsl(224, 36%, 15%);
+  --del-reset-key-bg-color: hsl(225, 21%, 49%);
+  --del-reset-key-bg-color-hover: hsl(224, 76%, 80%);
+  --del-reset-key-shadow-color: hsl(224, 28%, 35%);
+  --equal-key-bg-color: hsl(6, 63%, 50%);
+  --equal-key-bg-color-hover: hsl(6, 99%, 67%);
+  --equal-key-shadow-color: hsl(6, 70%, 34%);
+  --key-bg-color: hsl(30, 25%, 89%);
+  --key-bg-color-hover: hsl(0, 0%, 100%);
+  --key-shadow-color: hsl(28, 16%, 65%);
+  --text-color: hsl(0, 0%, 100%);
+  --text-color-num: hsl(221, 14%, 31%);
+  --text-color-prev-op: #ccc;
+  --text-color-equal-btn: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--main-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "League Spartan", sans-serif;
+  transition: background-color 0.5s;
+}
+
+.container {
+  width: 90%;
+  max-width: 45rem;
+  padding: 4rem;
+}
+
+.calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+  position: relative;
+}
+
+.theme-number {
+  width: 4rem;
+  position: absolute;
+  top: -1.1rem;
+  right: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.theme-number span {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.calc-text {
+  color: var(--text-color);
+  font-size: 2.4rem;
+  font-weight: bold;
+  padding-left: 0.6rem;
+}
+
+.calc-theme {
+  display: flex;
+  width: 11rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-theme span {
+  color: var(--text-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.tri-state-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 5.5rem;
+  height: 2rem;
+  border-radius: 1.5rem;
+  background-color: var(--keypad-background-color);
+}
+
+.toggle-btn {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+  background-color: var(--equal-key-bg-color);
+}
+
+.active:hover {
+  background-color: var(--equal-key-bg-color-hover);
+}
+
+.calc-display {
+  width: 100%;
+  min-height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 1rem;
+  color: var(--text-color);
+  background-color: var(--screen-background-color);
+  margin-bottom: 1.2rem;
+  border-radius: var(--border-radius);
+  font-size: 3rem;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.prev-op {
+  color: var(--text-color-prev-op);
+  font-size: 2.2rem;
+}
+
+.calc-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+  background-color: var(--keypad-background-color);
+  border-radius: var(--border-radius);
+  gap: 1.8rem;
+}
+
+.calc-op-box {
+  font-family: inherit;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: var(--key-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2.5px var(--key-shadow-color);
+  border: none;
+  outline: none;
+}
+
+.calc-op-box:hover {
+  cursor: pointer;
+  background-color: var(--key-bg-color-hover);
+}
+
+.calc-op-box span {
+  font-weight: bold;
+  font-size: 2.8rem;
+  color: var(--text-color-num);
+}
+
+.btn {
+  color: #fff;
+  font-family: inherit;
+  text-align: center;
+  border-radius: var(--border-radius);
+  padding: 1.2rem 0;
+  border: none;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-del,
+.btn-reset {
+  background-color: var(--del-reset-key-bg-color);
+  box-shadow: 0 2.5px var(--del-reset-key-shadow-color);
+}
+.btn-reset {
+  grid-column: span 2;
+}
+
+.btn-del:hover,
+.btn-reset:hover {
+  background-color: var(--del-reset-key-bg-color-hover);
+}
+
+.btn-equal {
+  color: var(--text-color-equal-btn);
+  background-color: var(--equal-key-bg-color);
+  box-shadow: 0 2.5px var(--equal-key-shadow-color);
+  grid-column: span 2;
+}
+
+.btn-equal:hover {
+  background-color: var(--equal-key-bg-color-hover);
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .container {
+    width: 100%;
+    padding: 4rem 3rem;
+  }
+
+  .calc-body {
+    gap: 1.8rem 1.2rem;
+  }
+
+  .calc-op-box {
+    padding: 1.6rem 0rem;
+    border-radius: 5px;
+  }
+}
